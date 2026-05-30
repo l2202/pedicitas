@@ -1,0 +1,21 @@
+services:
+  mysql_master:
+    image: mysql:8.0
+    container_name: mysql_master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: pedicitas
+    command: --server-id=1 --log-bin=mysql-bin
+    ports:
+      - "3307:3306"
+
+  mysql_slave:
+    image: mysql:8.0
+    container_name: mysql_slave
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    command: --server-id=2
+    depends_on:
+      - mysql_master
