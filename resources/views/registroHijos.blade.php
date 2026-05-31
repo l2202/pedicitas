@@ -23,13 +23,15 @@
               Registra los datos del menor.
             </p>
 
-            <form>
+            <form method="POST" action="{{route('registrar')}}">
+            @csrf
               <div class="mb-3">
                 <label for="nombreHijo" class="form-label">Nombre del hijo</label>
                 <input 
                   type="text" 
                   class="form-control" 
                   id="nombreHijo" 
+                  name="nomHijo"
                   placeholder="Ingresa el nombre"
                   required
                 >
@@ -41,6 +43,7 @@
                   type="text" 
                   class="form-control" 
                   id="paterno" 
+                  name="apPat"
                   placeholder="Ingresa el apellido paterno"
                   required
                 >
@@ -52,6 +55,7 @@
                   type="text" 
                   class="form-control" 
                   id="materno" 
+                  name="apMat"
                   placeholder="Ingresa el apellido materno"
                   required
                 >
@@ -63,13 +67,14 @@
                   type="date" 
                   class="form-control" 
                   id="fechaNacimiento"
+                  name="fechaNacimiento"
                   required
                 >
               </div>
 
               <div class="mb-3">
                 <label for="sexo" class="form-label">Sexo</label>
-                <select class="form-select" id="sexo" required>
+                <select class="form-select" id="sexo" name="sexo" required>
                   <option value="">Selecciona una opción</option>
                   <option value="Femenino">Femenino</option>
                   <option value="Masculino">Masculino</option>
@@ -78,7 +83,7 @@
 
               <div class="mb-3">
                 <label for="alergias" class="form-label">Alergias</label>
-                <select class="form-select" id="alergias" required>
+                <select class="form-select" id="alergias" name="alergias" required>
                   <option value="">Selecciona una opción</option>
                   <option value="Ninguna">Ninguna</option>
                   <option value="Polvo">Polvo</option>

@@ -20,17 +20,18 @@
 
             <div class="d-flex align-items-center justify-content-center mb-4">
               <h2 class="me-4 mb-0">Mi perfil</h2>
-
             </div>
 
-            <form>
+            <form method="POST" action="{{ route('modificarPadre') }}">
+              @csrf
+
               <div class="mb-3">
                 <label for="nombre" class="form-label fw-bold">Nombre completo</label>
                 <input 
                   type="text" 
                   class="form-control" 
                   id="nombre" 
-                  value="Maria González"
+                  value="{{ $padre->nombre }}"
                   readonly
                 >
               </div>
@@ -41,7 +42,9 @@
                   type="email" 
                   class="form-control" 
                   id="correo" 
-                  value="maria.lopez@gmail.com"
+                  name="email"
+                  value="{{ $padre->email }}"
+                  required
                 >
               </div>
 
@@ -51,7 +54,9 @@
                   type="tel" 
                   class="form-control" 
                   id="telefono" 
-                  value="715 112 5696"
+                  name="telefono"
+                  value="{{ $padre->telefono }}"
+                  required
                 >
               </div>
 
@@ -59,37 +64,47 @@
                 <button type="submit" class="btn btn-success px-4">
                   Guardar cambios
                 </button>
-
               </div>
+
             </form>
 
           </div>
         </div>
 
-        <h4 class="text-center mb-3">Hijos </h4>
+        <h4 class="text-center mb-3">Hijos</h4>
 
-        <div class="card shadow mb-3">
-          <div class="card-body">
-
-            <h5 class="card-title mb-3">Maritza Hernández González</h5>
-
-            <p class="mb-1">
-              <strong>Edad:</strong> 3 años
-            </p>
-
-            <p class="mb-1">
-              <strong>Sexo:</strong> Femenino
-            </p>
-
-            <p class="mb-0">
-              <strong>Alergias:</strong> Lácteos
-            </p>
-
+        @if($hijos->isEmpty())
+          <div class="alert alert-info">
+            No has registrado ningún hijo.
           </div>
-        </div>
+        @else
+          @foreach($hijos as $hijo)
+            <div class="card shadow mb-3">
+              <div class="card-body">
+
+                <h5 class="card-title mb-3">
+                  {{ $hijo->nombre }} {{ $hijo->appa }} {{ $hijo->apma }}
+                </h5>
+
+                <p class="mb-1">
+                  <strong>Fecha nacimiento:</strong> {{ $hijo->fecha_nacimiento }}
+                </p>
+
+                <p class="mb-1">
+                  <strong>Sexo:</strong> {{ $hijo->sexo }}
+                </p>
+
+                <p class="mb-0">
+                  <strong>Alergias:</strong> {{ $hijo->alergias }}
+                </p>
+
+              </div>
+            </div>
+          @endforeach
+        @endif
 
         <div class="text-center mt-4">
-          <a href="registroHijos.html" class="btn btn-success">
+          <a href="{{ route('registroHijos') }}" class="btn btn-success">
             Registrar otro hijo
           </a>
         </div>
@@ -103,4 +118,3 @@
 
 </body>
 </html>
-

@@ -50,7 +50,7 @@
                   class="form-control" 
                   id="nombre" 
                   placeholder="Ingresa el nombre "
-                  name="name"
+                  name="nombre"
                   required
                 >
               </div>
@@ -60,7 +60,8 @@
                 <input 
                   type="text" 
                   class="form-control" 
-                  id="paterno" 
+                  id="paterno"
+                  name="paterno" 
                   placeholder="Ingresa el apellido paterno "
                   required
                 >
@@ -71,6 +72,7 @@
                     type="text" 
                     class="form-control" 
                     id="materno" 
+                    name="materno" 
                     placeholder="Ingresa el apellido materno "
                     required
                   >
@@ -78,7 +80,7 @@
 
               <div class="mb-3">
                 <label for="sexo" class="form-label">Sexo</label>
-                <select class="form-select" id="sexo" required>
+                <select class="form-select" id="sexo" name="sexo" required>
                   <option value="">Selecciona una opción</option>
                   <option value="Femenino">Femenino</option>
                   <option value="Masculino">Masculino</option>
@@ -93,6 +95,7 @@
                   type="tel" 
                   class="form-control" 
                   id="telefono" 
+                  name="telefono"
                   placeholder="Ejemplo: 1234567890"
                   pattern="[0-9]{10}"
                   required
@@ -103,6 +106,7 @@
                 <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
                 <input 
                   type="date" 
+                  name="fechaNacimiento"
                   class="form-control" 
                   id="fechaNacimiento"
                   required
