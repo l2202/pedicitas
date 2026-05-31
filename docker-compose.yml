@@ -1,21 +1,29 @@
 services:
   mysql_master:
     image: mysql:8.0
-    container_name: mysql_master
-    restart: always
+    command: --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=ON
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: pedicitas
-    command: --server-id=1 --log-bin=mysql-bin
-    ports:
-      - "3307:3306"
+    volumes:
+      - ./data/master:/var/lib/mysql
 
   mysql_slave:
     image: mysql:8.0
-    container_name: mysql_slave
-    restart: always
+    command: --server-id=2 --gtid-mode=ON --enforce-gtid-consistency=ON --read-only=1
     environment:
       MYSQL_ROOT_PASSWORD: 123
-    command: --server-id=2
+    volumes:
+      - ./data/slave:/var/lib/mysql
     depends_on:
       - mysql_master
+
+  proxysql:
+    image: proxysql/proxysql
+    ports:
+      - "3307:6033" # Tu Laravel siempre se conectará aquí
+    volumes:
+      - ./proxysql.cnf:/etc/proxysql.cnf
+    depends_on:
+      - mysql_master
+      - mysql_slave
