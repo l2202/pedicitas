@@ -31,8 +31,5 @@ return new class extends Migration
         Schema::dropIfExists('pacientes');
     }
 
-    public function pacientes()
-    {
-        return $this->hasMany(Paciente::class);
-    }
+    
 };
