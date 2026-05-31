@@ -23,7 +23,7 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect(route('login'));
+        return redirect(route('logearse'));
     }
 
     public function login(Request $request){
@@ -37,7 +37,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect(route('infoPadres'));
         }else{
-            return redirect(route('login'));
+            return redirect(route('logearse'));
         }
     }
 }

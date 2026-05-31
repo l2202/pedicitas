@@ -18,7 +18,7 @@
 
             <h3 class="text-center mb-4">Iniciar Sesión</h3>
 
-            <form method="POST" action="{{route('login')}}">
+            <form method="POST" action="{{route('logearse')}}">
               @csrf
               <div class="mb-3">
                 <label for="correo" class="form-label">Correo electrónico</label>

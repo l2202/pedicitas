@@ -11,6 +11,6 @@ Route::get('/', function () {
 });
 
 Route::post('/register', [LoginController::class, 'register'])->name('validar-registro');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('logearse');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

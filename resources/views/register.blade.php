@@ -116,7 +116,7 @@
 
             <p class="text-center mt-3 mb-0">
               ¿Ya tienes cuenta?
-              <a href="{{ route('login') }}">Inicia sesión</a>
+              <a href="{{ route('logearse') }}">Inicia sesión</a>
             </p>
 
           </div>
