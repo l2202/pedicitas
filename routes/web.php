@@ -7,8 +7,11 @@ use App\Http\Controllers\PacienteController;
 Route::view('/menuPaciente', 'menuPaciente')->name('menuPaciente');
 Route::view('/register', 'register')->name('register');
 Route::view('/login', 'login')->name('login');
-Route::get('/infoPadres', [PacienteController::class, 'mostrarHijos'])->middleware('auth')->name('infoPadres');
-Route::view('/registroHijos', 'registroHijos')->middleware('auth')->name('registroHijos');
+Route::get('/infoPadres', [PacienteController::class, 'mostrarHijos'])->middleware(['auth', 'padre'])->name('infoPadres');
+Route::view('/agendaDoc', 'agendaDoc')
+    ->middleware(['auth', 'doctor'])
+    ->name('agendaDoc');
+Route::view('/registroHijos', 'registroHijos')->middleware(['auth', 'padre'])->name('registroHijos');
 Route::get('/', function () {
     return view('login');
 });
