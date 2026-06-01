@@ -41,7 +41,7 @@ class LoginController extends Controller
         $remember = $request->has('remember') ? true : false;
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect(route('menuPaciente'));
+            return redirect(route('infoPadres'));
         }else{
             return redirect(route('logearse'));
         }
