@@ -41,11 +41,12 @@
             }
         }
     </style>
+    @laravelPWA
 </head>
 
 <body>
 
-    <!-- Navbar móvil -->
+    <!-- Navbar movil -->
     <nav class="navbar navbar-dark mobile-navbar" style="background-color: #5d0f10;">
         <div class="container-fluid">
             <button class="navbar-toggler"
@@ -61,7 +62,7 @@
         </div>
     </nav>
 
-    <!-- Menú móvil -->
+    <!-- Menu movil -->
     <div class="offcanvas offcanvas-start text-bg-dark"
         tabindex="-1"
         id="mobileMenu">
