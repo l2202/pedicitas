@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
+
+ protected $fillable = [
+        'fecha',
+        'hora_inicio',
+        'hora_fin',
+        'estado'
+    ];
     public function cita()
     {
         return $this->hasOne(Cita::class);

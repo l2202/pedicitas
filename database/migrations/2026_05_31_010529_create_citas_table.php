@@ -22,9 +22,8 @@ return new class extends Migration
               ->onDelete('cascade');
 
         $table->enum('status',[
-            'ocupada',
-            'disponible',
-            'completed'
+            'agendada',
+            'cancelada'
         ]);
 
 

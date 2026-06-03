@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Padre</title>
+    <title>Menú Doctor</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -76,7 +76,7 @@
 
 <body>
 
-
+    <!-- Navbar móvil -->
     <nav class="navbar navbar-dark mobile-navbar" style="background-color: #0d6efd;">
         <div class="container-fluid">
             <button class="navbar-toggler"
@@ -92,7 +92,7 @@
         </div>
     </nav>
 
-    <!-- Menú celular -->
+    <!-- Menú móvil -->
     <div class="offcanvas offcanvas-start text-bg-dark"
         tabindex="-1"
         id="mobileMenu">
@@ -112,22 +112,25 @@
                 <div class="usuario-menu d-flex align-items-center">
                     <i class="bi bi-person-circle"></i>
                     <div>
-                        <strong>{{ Auth::user()->nombre }}</strong>
+                        <strong>
+                            {{ Auth::user()->nombre }} {{ Auth::user()->appa }} {{ Auth::user()->apma }}
+                        </strong>
                         <br>
-                        <small>Padre </small>
+                        <small>Doctor</small>
                     </div>
                 </div>
 
-                <a href="{{ route('infoPadres') }}">
-                    <i class="bi bi-person me-2"></i> Ver perfil
+                <a href="{{ route('citasDoctor') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Citas
                 </a>
 
-                <a href="{{ route('registroHijos') }}">
-                    <i class="bi bi-person-plus me-2"></i> Registrar hijo
+
+                <a href="{{ route('agendaDoc') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Agenda
                 </a>
 
-                <a href="{{ route('agendarCita') }}">
-                    <i class="bi bi-calendar-check me-2"></i> Agendar cita
+                <a href="{{ route('notificaciones') }}">
+                    <i class="bi bi-bell me-2"></i> Mandar notificaciones
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">
@@ -151,22 +154,24 @@
                 <div class="usuario-menu d-flex align-items-center">
                     <i class="bi bi-person-circle"></i>
                     <div>
-                        <strong>{{ Auth::user()->nombre }}</strong>
+                        <strong>
+                            {{ Auth::user()->nombre }} {{ Auth::user()->appa }} {{ Auth::user()->apma }}
+                        </strong>
                         <br>
-                        <small>Padre</small>
+                        <small>Doctor</small>
                     </div>
                 </div>
 
-                <a href="{{ route('infoPadres') }}">
-                    <i class="bi bi-person me-2"></i> Ver perfil
+                <a href="{{ route('citasDoctor') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Citas
                 </a>
 
-                <a href="{{ route('registroHijos') }}">
-                    <i class="bi bi-person-plus me-2"></i> Registrar hijo
+                <a href="{{ route('agendaDoc') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Agenda
                 </a>
 
-                <a href="{{ route('agendarCita') }}">
-                    <i class="bi bi-calendar-check me-2"></i> Agendar cita
+                <a href="{{ route('notificaciones') }}">
+                    <i class="bi bi-bell me-2"></i> Mandar notificaciones
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">

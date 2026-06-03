@@ -1,6 +1,5 @@
 @extends('layouts.menuPadres')
 @section('content')
-
 <div class="container py-5">
 
   <div class="row justify-content-center">
@@ -22,7 +21,7 @@
                 type="text"
                 class="form-control"
                 id="nombre"
-                value="{{ $padre->nombre }}"
+                value="{{ $padre->nombre }} {{ $padre->appa }} {{ $padre->apma }}"
                 readonly>
             </div>
 
@@ -75,7 +74,7 @@
           </h5>
 
           <p class="mb-1">
-            <strong>Fecha nacimiento:</strong> {{ $hijo->fecha_nacimiento }}
+            <strong>Edad:</strong> {{ \Carbon\Carbon::parse($hijo->fecha_nacimiento)->age }} años
           </p>
 
           <p class="mb-1">

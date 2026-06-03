@@ -21,7 +21,9 @@ return new class extends Migration
 
             $table->enum('estado', [
                 'disponible',
-                'inutilizable'
+                'no_disponible',
+                'cita',
+                'cancelada'
             ]);
             $table->timestamps();
         });
