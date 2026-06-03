@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\NotificacionController;
 
 Route::view('/menuPaciente', 'menuPaciente')
     ->name('menuPaciente');
@@ -34,3 +35,18 @@ Route::post('/infoPadres', [PacienteController::class, 'modificarPadre'])->name(
 Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');
 })->name('offline');
+
+Route::post(
+    '/notificaciones',
+    [NotificacionController::class, 'guardar']
+)
+    ->middleware(['auth', 'doctor'])
+    ->name('guardarNotificacion');
+Route::get(
+    '/notificaciones',
+    function () {
+        return view('notificaciones');
+    }
+)
+    ->middleware(['auth', 'doctor'])
+    ->name('notificaciones');

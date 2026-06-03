@@ -18,7 +18,7 @@ class PacienteController extends Controller{
         $paciente->alergias=$request->alergias;
         $paciente->save();
 
-         return redirect(route('menuPaciente'));
+         return redirect(route('infoPadres'));
 
     }
 

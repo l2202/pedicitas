@@ -24,7 +24,7 @@ class LoginController extends Controller
         $user->save();
 
         Auth::login($user);
-        return redirect(route('menuPaciente'));
+        return redirect(route('infoPadres'));
     }
 
     public function logout(Request $request)

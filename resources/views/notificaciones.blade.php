@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agregar notificaciones</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  @laravelPWA 
+  @laravelPWA
 </head>
 
 <body class="bg-light">
@@ -21,46 +22,45 @@
 
             <h2 class="text-center mb-4">Agregar notificación</h2>
 
-            <form>
-
+            <form
+              action="{{ route('guardarNotificacion') }}"
+              method="POST">
+              @csrf
               <div class="mb-3">
                 <label class="form-label d-block">Para</label>
 
                 <div class="form-check form-check-inline">
-                  <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="para" 
-                    id="ninos" 
-                    value="Niños"
-                  >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="para"
+                    id="ninos"
+                    value="Masculino">
                   <label class="form-check-label" for="ninos">
                     Niños
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                  <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="para" 
-                    id="ninas" 
-                    value="Niñas"
-                  >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="para"
+                    id="ninas"
+                    value="Femenino">
                   <label class="form-check-label" for="ninas">
                     Niñas
                   </label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                  <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="para" 
-                    id="todos" 
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="para"
+                    id="todos"
                     value="Todos"
-                    checked
-                  >
+                    checked>
                   <label class="form-check-label" for="todos">
                     Todos
                   </label>
@@ -69,22 +69,37 @@
 
               <div class="mb-3">
                 <label for="edad" class="form-label">A la edad de</label>
-                <select class="form-select" id="edad" required>
+                <select class="form-select" id="edad" name="edad" required>
                   <option value="">Selecciona la edad</option>
-                  <option value="1 mes">1 mes</option>
-                  <option value="2 meses">2 meses</option>
-                  <option value="3 meses">3 meses</option>
-                  <option value="4 meses">4 meses</option>
-                  <option value="6 meses">6 meses</option>
-                  <option value="9 meses">9 meses</option>
-                  <option value="1 año">1 año</option>
-                  <option value="2 años">2 años</option>
-                  <option value="3 años">3 años</option>
-                  <option value="4 años">4 años</option>
-                  <option value="5 años">5 años</option>
+                  <option value="1">1 mes</option>
+                  <option value="2">2 meses</option>
+                  <option value="3">3 meses</option>
+                  <option value="4">4 meses</option>
+                  <option value="6">6 meses</option>
+                  <option value="9">9 meses</option>
+                  <option value="10">10 meses</option>
+                  <option value="11">11 meses</option>
+                  <option value="12">1 año</option>
+                  <option value="18">1.5 años</option>
+                  <option value="24">2 años</option>
+                  <option value="30">2.5 años</option>
+                  <option value="36">3 años</option>
+                  <option value="42">3.5 años</option>
+                  <option value="48">4 años</option>
+                  <option value="54">4.5 años</option>
+                  <option value="60">5 años</option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label class="form-label">
+                  Título del correo
+                </label>
 
+                <input
+                  type="text"
+                  name="titulo"
+                  class="form-control">
+              </div>
               <div class="mb-3">
                 <label for="mensaje" class="form-label">Mensaje</label>
                 <select class="form-select mb-2" id="mensaje">
@@ -95,11 +110,11 @@
                   <option value="crecimiento">Control de crecimiento</option>
                 </select>
 
-                <textarea 
-                  class="form-control" 
-                  rows="4" 
-                  placeholder="Escribe aquí el mensaje de la notificación"
-                ></textarea>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  name="mensaje"
+                  placeholder="Escribe aquí el mensaje de la notificación"></textarea>
               </div>
 
               <div class="text-center mt-4">
@@ -127,4 +142,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
