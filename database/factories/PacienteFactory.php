@@ -24,7 +24,7 @@ class PacienteFactory extends Factory
             'apma' => fake()->lastName(),
             'fecha_nacimiento' => fake()->dateTimeBetween('-5 years', '-1 year'),
             'sexo' => fake()->randomElement(['Masculino', 'Femenino']),
-            'alergias' => fake()->sentence(),
+            'alergias' => fake()->randomElement(['Polvo', 'Nada', 'Polen']),
         ];
     }
 }

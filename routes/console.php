@@ -11,3 +11,4 @@ Artisan::command('inspire', function () {
 Schedule::command(
     'app:mandar-notificaciones'
 )->everyMinute();
+//->dailyAt('08:00');
