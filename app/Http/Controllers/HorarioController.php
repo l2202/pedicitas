@@ -59,7 +59,7 @@ class HorarioController extends Controller
 
     public function mostrarHorarios(Request $request)
     {
-      
+
         $fecha = $request->dia;
 
         $horarios = collect();
@@ -69,6 +69,48 @@ class HorarioController extends Controller
         }
 
         return view('agendaDoc', compact('horarios'));
+    }
 
+    public function disponibilizarDia(Request $request)
+    {
+        $horas = [
+            '08:00' => '09:00',
+            '09:00' => '10:00',
+            '10:00' => '11:00',
+            '11:00' => '12:00',
+            '12:00' => '13:00',
+            '13:00' => '14:00',
+            '14:00' => '15:00',
+            '15:00' => '16:00',
+            '16:00' => '17:00',
+            '17:00' => '18:00',
+            '18:00' => '19:00',
+            '19:00' => '20:00',
+            '20:00' => '21:00',
+        ];
+
+        foreach ($horas as $inicio => $fin) {
+
+            $horario = Horario::firstOrNew([
+                'fecha' => $request->dia,
+                'hora_inicio' => $inicio
+            ]);
+
+            // No modificar citas ya ocupadas
+            if ($horario->estado === 'cita') {
+                continue;
+            }
+
+            $horario->fecha = $request->dia;
+            $horario->hora_inicio = $inicio;
+            $horario->hora_fin = $fin;
+            $horario->estado = 'disponible';
+
+            $horario->save();
         }
+
+        return redirect()
+            ->route('agendaDoc', ['dia' => $request->dia])
+            ->with('success', 'Todos los horarios fueron marcados como disponibles');
+    }
 }

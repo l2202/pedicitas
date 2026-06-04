@@ -86,3 +86,7 @@ Route::view('/menuPaciente', 'menuPaciente')
 Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');
 })->name('offline');
+
+Route::post('/doctor/disponibilizarDia', [HorarioController::class, 'disponibilizarDia'])
+    ->middleware(['auth', 'doctor'])
+    ->name('disponibilizarDia');
