@@ -69,7 +69,7 @@ Route::post('/notificaciones', [NotificacionController::class, 'guardar'])
     ->middleware(['auth', 'doctor'])
     ->name('guardarNotificacion');
 
-    Route::get('/citasDoctor', [CitaController::class, 'citasDoctor'])
+Route::get('/citasDoctor', [CitaController::class, 'citasDoctor'])
     ->middleware(['auth', 'doctor'])
     ->name('citasDoctor');
 
@@ -90,3 +90,7 @@ Route::get('/offline', function () {
 Route::post('/doctor/disponibilizarDia', [HorarioController::class, 'disponibilizarDia'])
     ->middleware(['auth', 'doctor'])
     ->name('disponibilizarDia');
+
+Route::get('/padreCitas', [CitaController::class, 'citasPadre'])
+    ->middleware(['auth', 'padre'])
+    ->name('padreCitas');

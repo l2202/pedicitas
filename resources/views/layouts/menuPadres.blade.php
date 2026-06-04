@@ -130,6 +130,10 @@
                     <i class="bi bi-calendar-check me-2"></i> Agendar cita
                 </a>
 
+                <a href="{{ route('padreCitas') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Mis citas
+                </a>
+
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn-salir">
@@ -168,6 +172,11 @@
                 <a href="{{ route('agendarCita') }}">
                     <i class="bi bi-calendar-check me-2"></i> Agendar cita
                 </a>
+
+                <a href="{{ route('padreCitas') }}">
+                    <i class="bi bi-calendar-week me-2"></i> Mis citas
+                </a>
+
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
