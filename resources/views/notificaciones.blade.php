@@ -114,13 +114,6 @@
               </div>
 
             </form>
-
-            <div class="text-center mt-3">
-              <a href="inicio.html" class="btn btn-outline-secondary">
-                Volver al inicio
-              </a>
-            </div>
-
           </div>
         </div>
 
