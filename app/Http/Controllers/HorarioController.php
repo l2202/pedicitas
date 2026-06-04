@@ -91,7 +91,7 @@ class HorarioController extends Controller
 
         foreach ($horas as $inicio => $fin) {
 
-            $horario = Horario::firstOrNew([
+            $horario = Horario::firstOrNew([ //
                 'fecha' => $request->dia,
                 'hora_inicio' => $inicio
             ]);

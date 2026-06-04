@@ -2,9 +2,9 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
+use Illuminate\Bus\Queueable; //para poner en cola el correo
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\MailMessage; //construir el correo
 use Illuminate\Notifications\Notification;
 
 class Notificacion extends Notification
@@ -14,7 +14,7 @@ class Notificacion extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(
+    public function __construct( //lo quue tiene el correo
         public $titulo,
         public $mensaje
     ) {}
@@ -24,9 +24,10 @@ class Notificacion extends Notification
      *
      * @return array<int, string>
      */
-    public function via($notifiable)
+    public function via($notifiable) //notifiable es la persona o modelo que recibe la notif
     {
-        return ['mail'];
+        return ['mail'];  //por donde se manda la notificacion
+    
     }
 
     /**
@@ -35,9 +36,9 @@ class Notificacion extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject($this->titulo)
-            ->line($this->mensaje)
-            ->action('Reserva una cita con nosotros', url('/'));
+            ->subject($this->titulo) //asunto
+            ->line($this->mensaje) 
+            ->action('Reserva una cita con nosotros', url('/')); //para redireccionar a login
     }
 
     /**

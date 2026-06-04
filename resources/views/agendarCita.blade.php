@@ -103,7 +103,7 @@
                       $estado = 'no_disponible';
 
                       foreach($horarios as $horario) {
-                        if(substr($horario->hora_inicio, 0, 5) == $valor) {
+                        if(substr($horario->hora_inicio, 0, 5) == $valor) { 
                           $estado = $horario->estado;
                           $horarioId = $horario->id;
                           $horaInicio = substr($horario->hora_inicio, 0, 5);

@@ -11,30 +11,30 @@ use App\Models\Paciente;
 use App\Notifications\Notificacion;
 use Carbon\Carbon;
 
-#[Signature('app:mandar-notificaciones')]
+#[Signature('app:mandar-notificaciones')] //nomvre de comando
 #[Description('Command description')]
 class MandarNotificaciones extends Command
 {
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle() //entra directo a este metodo
     {
         $this->info("Comando iniciado");
 
-        $reglas = NotificacionRegla::where('activo', true)->get();
-        $this->info("Reglas encontradas: " . $reglas->count());
+        $reglas = NotificacionRegla::where('activo', true)->get(); //busca las reglas activas
+        $this->info("Reglas encontradas: " . $reglas->count()); //cuantas reglas encontro
 
         foreach ($reglas as $regla) {
             $this->info("Procesando regla " . $regla->id);
 
-            $pacientes = Paciente::all();
+            $pacientes = Paciente::all(); //todos los pacientes y los cuenta
             $this->info("Pacientes encontrados: " . $pacientes->count());
 
             foreach ($pacientes as $paciente) {
                 $edadMeses = (int)
                     Carbon::parse($paciente->fecha_nacimiento)
-                    ->diffInMonths(now());
+                    ->diffInMonths(now()); //extrae la fecha de nacimiento y cslcula la diferencia de meses con la fecha acatyal
                 $this->info(
                     "Paciente: " . $paciente->nombre .
                         " | Edad: " . $edadMeses .
@@ -42,7 +42,7 @@ class MandarNotificaciones extends Command
                 );
                 if ($edadMeses == $regla->edad_meses) {
                     if (
-                        $regla->sexo == 'Todos'
+                        $regla->sexo == 'Todos' //revisa sexo
                         ||
                         $regla->sexo == $paciente->sexo
                     ) {
@@ -60,7 +60,7 @@ class MandarNotificaciones extends Command
                             $padre = $paciente->user;
 
                             if (!$padre) {
-                                continue;
+                                continue;//saltar a otro
                             }
                             try {
                                 $padre->notify(
@@ -72,16 +72,16 @@ class MandarNotificaciones extends Command
                                 $this->info(
                                     "Correo enviado a: "
                                         . $padre->email
-                                );
-                                NotificacionEnviada::create([
+                                ); //si se manda muestra esto
+                                NotificacionEnviada::create([ //guardar en tabla
                                     'regla_id' => $regla->id,
                                     'paciente_id' => $paciente->id,
-                                    'sent_at' => now()
+                                    'sent_at' => now() //guarda decha y hora
                                 ]);
                             } catch (\Exception $e) {
 
                                 $this->error(
-                                    "Error enviando correo a " . $padre->email
+                                    "Error enviando correo a " . $padre->email //por si no se manda
                                 );
                             }
                         }

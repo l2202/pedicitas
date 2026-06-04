@@ -103,7 +103,7 @@
             </div>
 
           </form>
-          @if(request('dia'))
+          @if(request('dia')) //Sihay dia seleecionado
           <form method="POST" action="{{ route('disponibilizarDia') }}">
             @csrf
 

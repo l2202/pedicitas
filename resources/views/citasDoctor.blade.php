@@ -11,17 +11,7 @@
 
             <h2 class="text-center mb-4">Citas agendadas</h2>
 
-            @if(session('success'))
-              <div class="alert alert-success">
-                {{ session('success') }}
-              </div>
-            @endif
 
-            @if(session('error'))
-              <div class="alert alert-danger">
-                {{ session('error') }}
-              </div>
-            @endif
 
             @if($citas->count() == 0)
 
