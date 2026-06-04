@@ -16,13 +16,36 @@
             @csrf
 
             <div class="mb-3">
-              <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+              <label for="nombre" class="form-label fw-bold">Nombre</label>
               <input
                 type="text"
                 class="form-control"
                 id="nombre"
-                value="{{ $padre->nombre }} {{ $padre->appa }} {{ $padre->apma }}"
-                readonly>
+                name="nombre"
+                value="{{ $padre->nombre }}"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="appa" class="form-label fw-bold">Apellido paterno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="appa"
+                name="appa"
+                value="{{ $padre->appa }}"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="apma" class="form-label fw-bold">Apellido materno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apma"
+                name="apma"
+                value="{{ $padre->apma }}"
+                required>
             </div>
 
             <div class="mb-3">
@@ -82,17 +105,19 @@
             @endphp
 
             <strong>Edad:</strong>
-            {{ $años }} años y {{ $meses }} meses
+            @if ($años < 1)
+              {{ $meses }} meses
+              @else
+              {{ $años }} años
+              @endif </p>
 
-          </p>
+              <p class="mb-1">
+                <strong>Sexo:</strong> {{ $hijo->sexo }}
+              </p>
 
-          <p class="mb-1">
-            <strong>Sexo:</strong> {{ $hijo->sexo }}
-          </p>
-
-          <p class="mb-0">
-            <strong>Alergias:</strong> {{ $hijo->alergias }}
-          </p>
+              <p class="mb-0">
+                <strong>Alergias:</strong> {{ $hijo->alergias }}
+              </p>
 
         </div>
       </div>
