@@ -16,13 +16,36 @@
             @csrf
 
             <div class="mb-3">
-              <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+              <label for="nombre" class="form-label fw-bold">Nombre</label>
               <input
                 type="text"
                 class="form-control"
                 id="nombre"
-                value="{{ $padre->nombre }} {{ $padre->appa }} {{ $padre->apma }}"
-                readonly>
+                name="nombre"
+                value="{{ $padre->nombre }}"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="appa" class="form-label fw-bold">Apellido paterno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="appa"
+                name="appa"
+                value="{{ $padre->appa }}"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="apma" class="form-label fw-bold">Apellido materno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apma"
+                name="apma"
+                value="{{ $padre->apma }}"
+                required>
             </div>
 
             <div class="mb-3">
@@ -74,16 +97,27 @@
           </h5>
 
           <p class="mb-1">
-            <strong>Edad:</strong> {{ \Carbon\Carbon::parse($hijo->fecha_nacimiento)->age }} años
-          </p>
+            @php
 
-          <p class="mb-1">
-            <strong>Sexo:</strong> {{ $hijo->sexo }}
-          </p>
+            $fecha = Carbon\Carbon::parse($hijo->fecha_nacimiento);
+            $meses = (int)$fecha->diffInMonths(now());
+            $años = $fecha->age;
+            @endphp
 
-          <p class="mb-0">
-            <strong>Alergias:</strong> {{ $hijo->alergias }}
-          </p>
+            <strong>Edad:</strong>
+            @if ($años < 1)
+              {{ $meses }} meses
+              @else
+              {{ $años }} años
+              @endif </p>
+
+              <p class="mb-1">
+                <strong>Sexo:</strong> {{ $hijo->sexo }}
+              </p>
+
+              <p class="mb-0">
+                <strong>Alergias:</strong> {{ $hijo->alergias }}
+              </p>
 
         </div>
       </div>

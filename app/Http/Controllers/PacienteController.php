@@ -38,6 +38,15 @@ class PacienteController extends Controller{
         if ($request->telefono) {
             $padre->telefono = $request->telefono;
         }
+        if ($request->nombre) {
+            $padre->nombre = $request->nombre;
+        }
+        if ($request->appa) {
+            $padre->appa = $request->appa;
+        }
+        if ($request->apma) {
+            $padre->apma = $request->apma;
+        }
 
         $padre->save();
 
