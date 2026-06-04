@@ -37,7 +37,7 @@ class Notificacion extends Notification
         return (new MailMessage)
             ->subject($this->titulo)
             ->line($this->mensaje)
-            ->action('Reserva una cita con nosotros', url('/'));
+            ->action('Reserva una cita con nosotros', route('logearse'));
     }
 
     /**

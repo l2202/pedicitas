@@ -74,7 +74,16 @@
           </h5>
 
           <p class="mb-1">
-            <strong>Edad:</strong> {{ \Carbon\Carbon::parse($hijo->fecha_nacimiento)->age }} años
+            @php
+
+            $fecha = Carbon\Carbon::parse($hijo->fecha_nacimiento);
+            $meses = (int)$fecha->diffInMonths(now());
+            $años = $fecha->age;
+            @endphp
+
+            <strong>Edad:</strong>
+            {{ $años }} años y {{ $meses }} meses
+
           </p>
 
           <p class="mb-1">
