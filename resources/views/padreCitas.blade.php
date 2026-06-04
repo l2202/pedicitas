@@ -43,7 +43,7 @@
                         </span>
                         @else
                         <span class="badge bg-danger">
-                            Cancelada
+                            Cancelada por el doctor
                         </span>
                         @endif
                     </td>
